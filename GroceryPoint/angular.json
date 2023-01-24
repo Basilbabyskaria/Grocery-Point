@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Grocery_Point": {
+    "GroceryPoint": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Grocery_Point:build:production"
+              "browserTarget": "GroceryPoint:build:production"
             },
             "development": {
-              "browserTarget": "Grocery_Point:build:development"
+              "browserTarget": "GroceryPoint:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Grocery_Point:build"
+            "browserTarget": "GroceryPoint:build"
           }
         },
         "test": {

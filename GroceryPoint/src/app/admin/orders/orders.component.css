@@ -1,0 +1,5 @@
+.top-strip{
+    width: calc(100vw - 4rem);
+    height: 80px;
+    /* background-color: blue; */
+}

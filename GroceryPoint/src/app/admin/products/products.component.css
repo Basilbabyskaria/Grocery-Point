@@ -1,0 +1,43 @@
+/* .top-strip{
+    width: 100%;
+}
+.add-btn{
+    display: inline-block;
+    position: fixed;
+    left: 85%;
+} */
+.top-strip{
+    width: calc(100vw - 4rem);
+    height: 100px;
+    /* background-color: blue; */
+}
+.add-btn{
+    float: right;
+    margin-top: 2rem;
+    margin-right:1rem ;
+}.middle-strip{
+    width: calc(100vw - 4rem);
+    height: 2rem;
+    /* background-color: aqua; */
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group button{
+    border: none;
+    outline: none;
+    /* border-radius: 2px; */
+
+}
+
+.bottom-strip{
+    width: calc(100vw - 4rem);
+    height: 10rem;
+    /* margin-top: 2rem; */
+    /* background-color: brown; */
+
+}
+.productx{
+    height: 2rem;
+    width: auto;
+}

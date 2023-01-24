@@ -1,0 +1,156 @@
+<div class="top-strip">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary add-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+add products  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Products</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <form [formGroup]="addproductsform">
+            <input type="text" formControlName="title" class="form-control" placeholder="Title">
+                <div *ngIf="this.addproductsform.get('title')?.errors && this.addproductsform.get('title')?.touched" style="color: red;">Invalid</div>
+            <input type="text" formControlName="catagory" class="form-control mt-3" placeholder="Catagory">
+                <div *ngIf="this.addproductsform.get('catagory')?.errors && this.addproductsform.get('catagory')?.touched" style="color: red;">Invalid</div>
+            <textarea type="text" formControlName="discreption" class="form-control mt-3" placeholder="Discreption"></textarea>
+            <input type="text" formControlName="cost" class="form-control mt-3" placeholder=" Item Cost">
+                <div *ngIf="this.addproductsform.get('cost')?.errors && this.addproductsform.get('cost')?.touched" style="color: red;">Invalid</div>
+            <input type="text" formControlName="Sprice" class="form-control mt-3" placeholder="Selling Price">
+                <div *ngIf="this.addproductsform.get('Sprice')?.errors && this.addproductsform.get('Sprice')?.touched" style="color: red;">Invalid</div>
+            <input type="text" formControlName="count" class="form-control mt-3" placeholder="Item Count">
+                <div *ngIf="this.addproductsform.get('count')?.errors && this.addproductsform.get('count')?.touched" style="color: red;">Invalid</div>
+            <input type="date" formControlName="date" class="form-control mt-3" placeholder="Expiry Date">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"(click)="addproduct()">add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="middle-strip">
+  <div class="input-group"style="border-radius:30px;  border: 0; border-color:red">
+    <input type="text"  class="ps-3 form control" placeholder="Search Your Product" type="text">
+    
+    <button type="submit" ><i class="fa fa-search"></i></button>
+  </div>
+</div> -->
+<div class="card shadow m-4 ">
+  <form
+    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="input-group mt-4">
+        <input type="text" class="form-control bg-light border-0 small" (keyup)="search($event)"placeholder="Search for..."
+            aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+            </button>
+        </div>
+    </div>
+  </form>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Catagory</th>
+                    <th>price</th>
+                    <th>Expiry</th>
+                    <th>Quantity Left</th>
+                    <th>Profit</th>
+                    <th>Tools</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Title</th>
+                    <th>Catagory</th>
+                    <th>price</th>
+                    <th>Expiry</th>
+                    <th>Quantity Left</th>
+                    <th>Profit</th>
+                    <th>Tools</th>
+                </tr>
+            </tfoot>
+            <tbody *ngFor="let product of products | filter:searchterm :'title' ">
+              <tr>
+                <td>{{product.title}}</td>
+                <td>{{product.catagory}}</td>
+                <td>{{product.Sprice}}</td>
+                <td>{{product.expiry}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.profit}}</td>
+                <td>
+                  <div class="dropdown">
+                   <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Modify</button>
+                   <ul class="dropdown-menu" >
+                     <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editp" >Edit</button></li>
+                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deletep">Remove</a></li>
+                   </ul>
+                   <!-- Button trigger modal -->
+
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form [formGroup]="addproductsform">
+                             <input type="text" formControlName="title" class="form-control" placeholder="Title">
+                                 <div *ngIf="this.addproductsform.get('title')?.errors && this.addproductsform.get('title')?.touched" style="color: red;">Invalid</div>
+                             <input type="text" formControlName="catagory" class="form-control mt-3" placeholder="Catagory">
+                                 <div *ngIf="this.addproductsform.get('catagory')?.errors && this.addproductsform.get('catagory')?.touched" style="color: red;">Invalid</div>
+                             <textarea type="text" formControlName="discreption" class="form-control mt-3" placeholder="Discreption"></textarea>
+                             <input type="text" formControlName="cost" class="form-control mt-3" placeholder=" Item Cost">
+                                 <div *ngIf="this.addproductsform.get('cost')?.errors && this.addproductsform.get('cost')?.touched" style="color: red;">Invalid</div>
+                             <input type="text" formControlName="Sprice" class="form-control mt-3" placeholder="Selling Price">
+                                 <div *ngIf="this.addproductsform.get('Sprice')?.errors && this.addproductsform.get('Sprice')?.touched" style="color: red;">Invalid</div>
+                             <input type="text" formControlName="count" class="form-control mt-3" placeholder="Item Count">
+                                 <div *ngIf="this.addproductsform.get('count')?.errors && this.addproductsform.get('count')?.touched" style="color: red;">Invalid</div>
+                             <input type="date" formControlName="date" class="form-control mt-3" placeholder="Expiry Date">
+                           </form>
+                         </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary"data-bs-dismiss="modal"(click)="editProduct()">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deletep" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">You Sure</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary"data-bs-dismiss="modal"(click)="deleteProduct(product)">Yes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+      </div>
+  </div>
+    
+</div>
