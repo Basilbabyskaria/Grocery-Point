@@ -36,4 +36,10 @@ export class DataService {
   deleteProduct(title:any){
     this.http.delete('http://localhost:3000/deleteproduct/'+title)
   }
+  getOrders(){
+    return this.http.get('http://localhost:3000/getorders')
+  }
+  getsummary(){
+    return this.http.get('http://localhost:3000/getsummary')
+  }
 }

@@ -33,37 +33,48 @@
                     <th>Total</th>
                 </tr>
             </tfoot>
-            <tbody >
+            <tbody *ngFor="let order of orders  | filter:searchterm :'id'">
               <tr>
-                <td>order.id</td>
-                <td>order.date</td>
+                <td>{{order.id}}</td>
+                <td>{{(order.date).slice(0,10)}}</td>
                 <td>
                     <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Modify</button>
-                        <table class="dropdown-menu" >
-                          <thead>
-                            <tr>
-                                <th>Index</th>
-                                <th>Title</th>
-                                <th>Quantity</th>
-                                <th>price</th>
-                                <th>Total</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">List</button>
+                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-body">
+                                    <table>
+                                        <thead>
+                                          <tr>
+                                              <th>Index</th>
+                                              <th>Title</th>
+                                              <th>Quantity</th>
+                                              <th>price</th>
+                                              <th>Total</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr >
+                                              <!-- <td>s</td>
+                                              <td>{{order.items[i].title}}</td>
+                                              <td>{{order.items[i].price}}</td>
+                                              <td>{{order.items[i].quaantity}}</td>
+                                              <td>{{order.items[i].total}}</td> -->
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </td>
-                <td>order.customer_name</td>
-                <td>order.grand_total</td>
+                <td>{{order.customer_name}}</td>
+                <td>{{order.grand_total}}</td>
             </tr>
 
             </tbody>

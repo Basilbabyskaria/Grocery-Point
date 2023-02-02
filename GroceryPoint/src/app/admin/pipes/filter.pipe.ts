@@ -26,4 +26,25 @@ export class FilterPipe implements PipeTransform {
 
   }
 
+  transform2(orders: [], searchkey: number,propname:number): any[] {
+
+    const result:any=[];
+
+    if(!orders){
+      return orders;
+
+    }
+    //searching
+    
+    orders.forEach((order:any)=>{
+      if(order[propname].trim().includes(searchkey)){
+        result.push(order);
+      }
+    })
+    return result;
+
+
+
+  }
+
 }
