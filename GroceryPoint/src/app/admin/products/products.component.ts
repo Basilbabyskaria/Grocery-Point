@@ -20,6 +20,17 @@ export class ProductsComponent implements OnInit {
 
 
   })
+  editproductsform=this.fb.group({
+    title:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]],
+    catagory:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]*')]],
+    cost:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    Sprice:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    count:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    discreption:[''],
+    date:['']
+
+
+  })
   products: any;
   searchterm: any;
   constructor(private fb:FormBuilder,private ds:DataService) { }
@@ -36,6 +47,8 @@ export class ProductsComponent implements OnInit {
     this.ds.getProducts().subscribe(
       (data:any)=>{
         this.products=data.products;
+        console.log(this.products);
+        
         
       })
   }
@@ -52,23 +65,42 @@ export class ProductsComponent implements OnInit {
       this.ds.addproduct(title,catagory,descreption,cost,Sprice,count,date)
       .subscribe((result:any)=>{
         alert(result.message)
-      },
-      (result:any)=>{
-        // alert (result.error.message);
+        this.getProducts();
+
       })
-      this.getProducts();
       
     }
     // else{
       // alert('invalid form')
     // }
   // }
-  editProduct(){
+  editProduct(title:any){
+    var title=title;
+    var catagory=this.editproductsform.value.catagory;
+    var descreption=this.editproductsform.value.discreption;
+    var Sprice=this.editproductsform.value.Sprice;
+    var cost=this.editproductsform.value.cost;
+    var count=this.editproductsform.value.count;
+    var date=this.editproductsform.value.date;
+  
+    // if (this.addproductsform.valid) {
+      this.ds.editproduct(title,catagory,descreption,cost,Sprice,count,date)
+      .subscribe((result:any)=>{
+        alert(result.message)
+        this.getProducts();
 
+      })
   }
   deleteProduct(product:any){    
-    this.ds.deleteProduct(product.title);
+    this.ds.deleteProduct(product.title).subscribe(
+      (result:any)=>{
+        this.getProducts();
+
+      }
+    )
     this.getProducts();
+    console.log(product.title);
+    
 
   }
   search(event:any){

@@ -19,7 +19,7 @@ export class OrdersComponent implements OnInit {
     this.ds.getOrders().subscribe(
       (data:any)=>{
         this.orders=data.orders;
-        console.log(data.orders);
+        console.log(this.orders[1].items);
                 
       })
   }

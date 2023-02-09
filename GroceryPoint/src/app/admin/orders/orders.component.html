@@ -33,7 +33,7 @@
                     <th>Total</th>
                 </tr>
             </tfoot>
-            <tbody *ngFor="let order of orders  | filter:searchterm :'id'">
+            <tbody *ngFor="let order of orders">
               <tr>
                 <td>{{order.id}}</td>
                 <td>{{(order.date).slice(0,10)}}</td>
@@ -54,10 +54,10 @@
                                               <th>Total</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
-                                          <tr >
-                                              <!-- <td>s</td>
-                                              <td>{{order.items[i].title}}</td>
+                                        <tbody  >
+                                          <tr>
+                                              <!-- <td>{{i.title}}</td> -->
+                                              <!-- <td>{{order.items[i].title}}</td>
                                               <td>{{order.items[i].price}}</td>
                                               <td>{{order.items[i].quaantity}}</td>
                                               <td>{{order.items[i].total}}</td> -->

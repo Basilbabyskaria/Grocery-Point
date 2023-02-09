@@ -8,13 +8,15 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
     AdminHeaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,

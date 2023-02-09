@@ -33,13 +33,34 @@ export class DataService {
     return this.http.post('http://localhost:3000/product',body)
   
   }
+  editproduct(title:any,catagory:any,descreption:any,cost:any,Sprice:any,count:any,date:any){
+    const body={
+      title:title,
+      category:catagory,
+      description:descreption,
+      cost:cost,
+      Sprice:Sprice,
+      quantity:count,
+      expiry:date,
+
+    }
+    console.log(body);
+    
+    return this.http.post('http://localhost:3000/editproduct',body)
+  
+  }
   deleteProduct(title:any){
-    this.http.delete('http://localhost:3000/deleteproduct/'+title)
+    
+    return this.http.delete('http://localhost:3000/deleteproduct/'+ title)
   }
   getOrders(){
     return this.http.get('http://localhost:3000/getorders')
   }
   getsummary(){
     return this.http.get('http://localhost:3000/getsummary')
+  }
+  graph_data(){
+    return this.http.get('http://localhost:3000/graph_data')
+
   }
 }
