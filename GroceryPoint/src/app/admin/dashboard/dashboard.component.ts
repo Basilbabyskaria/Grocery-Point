@@ -24,16 +24,11 @@ export class DashboardComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.date=[(this.today.getFullYear()), ("0"+(this.today.getMonth()+1)), ("0"+this.today.getDate())].join('-') 
     this.summary();
-    console.log(this.date);
     this.RenderChart();
 
   }
-  load(event:any){
-    console.log(this.date);
-    
-  }
+  
   summary(){
     
     this.ds.getsummary().subscribe(
@@ -52,6 +47,8 @@ export class DashboardComponent implements OnInit {
     this.ds.graph_data().subscribe(
       (result:any)=>{            
       let data=result.data;
+      console.log(data);
+      
       
     const myChart =new Chart("profit", {
     type: 'bar',
@@ -72,13 +69,17 @@ export class DashboardComponent implements OnInit {
     }
   });
 })
+
+this.ds.catagory_graph_data().subscribe(
+  (result:any)=>{            
+  let data=result.data;
   const myChart2 =new Chart("chart2", {
     type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Grocery','Dairy','School','Cosmetics','Drinks/Snacks','Others',],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: '',
+        data: [data.Grocery, data.Dairy, data.School, data.Cosmetics, data.DS, data.Other],
         borderWidth: 1
       }]
     },
@@ -90,5 +91,7 @@ export class DashboardComponent implements OnInit {
       }
     }
   });
+}) 
+
   }
 }

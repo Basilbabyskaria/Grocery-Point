@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand  topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand  topbar mb-4 static-top shadow" *ngIf="hide.visible">
 
   <!-- Sidebar Toggle (Topbar) -->
   <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -14,31 +14,40 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-bell fa-fw"></i>
               <!-- Counter - Alerts -->
-              <span class="badge badge-danger badge-counter"></span>
+              <span class="badge badge-danger badge-counter">{{alert_count}}</span>
           </a>
           <form class="dropdown-menu p-4 dropdown-menu-end" style="width:290px; height:400px;">
-            <h1></h1>
+            <h4 class="mb-5">Alerts</h4>
+            <table>
+                <tbody>
+                    <tr  *ngFor="let a of alert">
+                        <td>
+                            <h6>{{a}} is about to expire</h6>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
           </form>
           <!-- Dropdown - Alerts -->
           <!-- ####################################################################################### -->
       </li>
 
       <!-- Nav Item - Messages -->
-      <li class="nav-item dropdown no-arrow mx-1 ">
+      <!-- <li class="nav-item dropdown no-arrow mx-1 ">
           <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-envelope fa-fw"></i>
+              <i class="fas fa-envelope fa-fw"></i> -->
               <!-- Counter - Messages -->
-              <span class="badge badge-danger badge-counter">7</span>
+              <!-- <span class="badge badge-danger badge-counter">7</span> -->
               
-          </a>
+          <!-- </a>
           <form class="dropdown-menu p-4 dropdown-menu-end" style="width:290px; height:400px;">
             <h1></h1>
-          </form>
+          </form> -->
           <!-- Dropdown - Messages -->
                     <!-- ####################################################################################### -->
 
-      </li>
+      <!-- </li> -->
 
       <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -48,7 +57,7 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
               <img class="img-profile rounded-circle"
-                  src="#">
+             src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/null/external-profile-100-most-used-icons-flaticons-flat-flat-icons-2.png"/>
           </a>
           <!-- Dropdown - User Information -->
                     <!-- ####################################################################################### -->

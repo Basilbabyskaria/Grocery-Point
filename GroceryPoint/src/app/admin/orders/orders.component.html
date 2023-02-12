@@ -3,7 +3,7 @@
   <form
     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
     <div class="input-group mt-4">
-        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+        <input type="text" class="form-control bg-light border-0 small" (keyup)="search($event)" placeholder="Search for..."
             aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
             <button class="btn btn-primary" type="button">
@@ -54,13 +54,13 @@
                                               <th>Total</th>
                                           </tr>
                                         </thead>
-                                        <tbody  >
+                                        <tbody >
                                           <tr>
-                                              <!-- <td>{{i.title}}</td> -->
-                                              <!-- <td>{{order.items[i].title}}</td>
-                                              <td>{{order.items[i].price}}</td>
-                                              <td>{{order.items[i].quaantity}}</td>
-                                              <td>{{order.items[i].total}}</td> -->
+                                              <td>1</td>
+                                              <td>{{order.items[1].title}}</td>
+                                              <td>{{order.items[1].quantity}}</td>
+                                              <td>{{order.items[1].price}}</td>
+                                              <td>{{order.items[1].total}}</td>
                                           </tr>
                                         </tbody>
                                       </table>

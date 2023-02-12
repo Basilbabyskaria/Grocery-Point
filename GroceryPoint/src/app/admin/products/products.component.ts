@@ -47,8 +47,7 @@ export class ProductsComponent implements OnInit {
     this.ds.getProducts().subscribe(
       (data:any)=>{
         this.products=data.products;
-        console.log(this.products);
-        
+        console.log(this.products[0]);
         
       })
   }
@@ -70,12 +69,15 @@ export class ProductsComponent implements OnInit {
       })
       
     }
-    // else{
-      // alert('invalid form')
-    // }
-  // }
-  editProduct(title:any){
-    var title=title;
+    trackByFn(i: number) { 
+      return i
+    }
+    current_field:any;
+  editProduct(id:any){
+    this.current_field=this.products[id]
+    var title=this.current_field.title;
+    console.log(title);
+    
     var catagory=this.editproductsform.value.catagory;
     var descreption=this.editproductsform.value.discreption;
     var Sprice=this.editproductsform.value.Sprice;

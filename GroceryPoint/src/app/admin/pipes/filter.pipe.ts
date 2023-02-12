@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(products: [], searchkey: string,propname:string): any[] {
+  transform(products: any[], searchkey: any,propname:any): any[] {
 
     const result:any=[];
 
@@ -26,11 +26,11 @@ export class FilterPipe implements PipeTransform {
 
   }
 
-  transform2(orders: [], searchkey: number,propname:number): any[] {
+  transform2(orders: any[], searchkey: any,propname:string): Number[] {
 
     const result:any=[];
 
-    if(!orders){
+    if(!orders|| searchkey==''||propname==''){
       return orders;
 
     }

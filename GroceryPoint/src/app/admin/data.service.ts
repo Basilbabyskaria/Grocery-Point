@@ -4,22 +4,25 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
+  
 })
 export class DataService {
 
   constructor(private http:HttpClient) { }
   searchkey=new BehaviorSubject('')  
+  getalerlt_expiry(){
+    return this.http.get('http://localhost:3000/getalerlt_expiry')
 
+  }
   getProducts(){
     // console.log( this.http.get('http://localhost:3000/getproducts'));
     
     return this.http.get('http://localhost:3000/getproducts')
 
   }
+
   addproduct(title:any,catagory:any,descreption:any,cost:any,Sprice:any,count:any,date:any){
     const body={
-
-
       title:title,
       category:catagory,
       description:descreption,
@@ -44,7 +47,7 @@ export class DataService {
       expiry:date,
 
     }
-    console.log(body);
+    // console.log(body);
     
     return this.http.post('http://localhost:3000/editproduct',body)
   
@@ -61,6 +64,10 @@ export class DataService {
   }
   graph_data(){
     return this.http.get('http://localhost:3000/graph_data')
+
+  }
+  catagory_graph_data(){
+    return this.http.get('http://localhost:3000/catagory_graph_data')
 
   }
 }

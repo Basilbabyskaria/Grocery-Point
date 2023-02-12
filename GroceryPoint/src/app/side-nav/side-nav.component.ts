@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HideService } from '../hide.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public hides:HideService) { }
 
   ngOnInit(): void {
   }

@@ -6,7 +6,7 @@ app-admin-header{
 }
 app-side-nav{
     width: 4rem;
-    background-color: aqua;
+    /* background-color: aqua; */
     position: fixed;
     top: 4rem;
     height: calc(100vh - 4rem);
@@ -16,5 +16,11 @@ main{
     position:absolute;
     top:4rem;
     left: 4rem;
+    display: flex;
+}
+customer_page{
+    position:absolute;
+    top:-4rem;
+    left:-4rem;
     display: flex;
 }
